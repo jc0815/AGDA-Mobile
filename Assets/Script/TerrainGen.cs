@@ -5,13 +5,28 @@ using UnityEngine;
 public class TerrainGen : MonoBehaviour
 {
     public GameObject[] terrain;
+    private GameObject grassBlock; //remove in the future?
     public float speed = 10.0f;
     private Vector2 screenBounds;
     private float whenToDissappear;
+    private float xSpawnPoint;
     private GameObject nextPiece;
 
     void Awake()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        xSpawnPoint = screenBounds.x + 5f;
+
+        grassBlock = Resources.Load<GameObject>("Prefab/Grass");
+        float xGB = 0;
+        while (xGB < xSpawnPoint)
+        {
+            Instantiate(grassBlock,new Vector3(xGB, 0, 0), Quaternion.identity);  //replacement for block generator, remove in the future?
+            xGB += grassBlock.GetComponent<BoxCollider2D>().size.x;
+
+        }
+
+
         GameObject[] ter = GameObject.FindGameObjectsWithTag("terrain");
         for (int i = 0; i < ter.Length; i++)
             ter[i].GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
@@ -19,10 +34,9 @@ public class TerrainGen : MonoBehaviour
     }
     void Start()
     {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        whenToDissappear = -1 * screenBounds.x * 1.5f;
-        nextPiece = PieceToSpawn();
         
+        whenToDissappear = -0.4f*screenBounds.x;        
+        nextPiece = PieceToSpawn();
 
     }
 
@@ -30,22 +44,19 @@ public class TerrainGen : MonoBehaviour
     {
         if (TimeToSpawn())
         {
-            print("called");
             SpawnLand(nextPiece);
             nextPiece = PieceToSpawn();
-
         }
         Destroy();
     }
 
     public bool TimeToSpawn() //check if okay to spawn
     {
-        float SpaceforNPiece = (screenBounds.x + 10f) - ClosestTerrain().transform.position.x; //Space available for next piece
-        float SpaceNeeded = nextPiece.GetComponent<SpriteRenderer>().size.x / 2 + ClosestTerrain().GetComponent<SpriteRenderer>().size.x / 2; // space we need            
+        float SpaceforNPiece = xSpawnPoint - ClosestTerrain().transform.position.x; //Space available for next piece
+        float SpaceNeeded = nextPiece.GetComponent<SpriteRenderer>().size.x / 2 + ClosestTerrain().GetComponent<SpriteRenderer>().size.x / 2; // space we need  
 
-        if (SpaceforNPiece >= SpaceNeeded)
-            return true;
-
+        if (SpaceforNPiece >= SpaceNeeded)               
+                return true;
         else
             return false;
 
@@ -61,7 +72,7 @@ public class TerrainGen : MonoBehaviour
     public void SpawnLand(GameObject a)
     {
         GameObject b = Instantiate(a) as GameObject;
-        b.transform.position = new Vector2(screenBounds.x + 10f, -1 * screenBounds.y);  //create it and set location
+        b.transform.position = new Vector2(xSpawnPoint, screenBounds.y - screenBounds.y);  //create it and set location
         b.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0); //set velocity
 
     }
@@ -71,15 +82,15 @@ public class TerrainGen : MonoBehaviour
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("terrain"); //terrain was the tag I used but feel free to change it
         float xpos;
-        float dcloseObj = 50f;
+        float dcloseObj = xSpawnPoint; 
         int objInd = -1;
 
         for (int i = 0; i < obj.Length; i++)
         {
             xpos = obj[i].transform.position.x;
-            if (xpos > 0 && ((screenBounds.x + 10f) - xpos) < dcloseObj) //find terrain closeset to spawn point
+            if (xSpawnPoint - xpos < dcloseObj) //find terrain closeset to spawn point
             {
-                dcloseObj = screenBounds.x + 10 - xpos; //difference between closet piece and spawn point              
+                dcloseObj = xSpawnPoint - xpos; //difference between closest piece and spawn point    
                 objInd = i;
             }
 
