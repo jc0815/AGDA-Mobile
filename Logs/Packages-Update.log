@@ -1,5 +1,5 @@
 
-=== Wed Oct 23 18:28:01 2019
+=== Thu Oct  3 18:46:16 2019
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -42,7 +42,7 @@ The following packages were added:
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
 
-=== Wed Oct 23 18:30:46 2019
+=== Wed Oct  9 18:41:54 2019
 
 Packages were changed.
 Update Mode: updateDependencies
