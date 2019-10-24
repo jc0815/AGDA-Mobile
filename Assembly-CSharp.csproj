@@ -62,11 +62,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\BlockGenerator.cs" />
     <Compile Include="Assets\Script\GameController.cs" />
     <Compile Include="Assets\Script\InputController.cs" />
     <Compile Include="Assets\Script\MonobehaviorSingleton.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\TerrainGen.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/james/Desktop/AGDA-Mobile/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
