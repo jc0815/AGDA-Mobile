@@ -22,10 +22,6 @@ public class InputController : MonoBehaviour
         {
             this.transform.position -= new Vector3(0.1f, 0, 0);
         }
-        if(Input.GetMouseButtonDown(0))
-        {
-            Player.Instance.CreateBlock();
-        }
         if (Input.GetKey(KeyCode.D))
         {
             Player.Instance.DeleteBlock();

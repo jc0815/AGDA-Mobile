@@ -11,7 +11,7 @@ public class Player : MonobehaviorSingleton<Player>
     void Start()
     {
         blocks = new ArrayList();
-        block = Resources.Load<GameObject>("Prefab/Grass");
+        block = Resources.Load<GameObject>("Prefab/SpawnBlock");
     }
 
     public void CreateBlock()

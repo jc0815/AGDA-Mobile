@@ -68,6 +68,12 @@
     <Compile Include="Assets\Script\MonobehaviorSingleton.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\TerrainGen.cs" />
+    <Compile Include="Assets\Script\UI\GameMenu.cs" />
+    <Compile Include="Assets\Script\UI\InGameMenu.cs" />
+    <Compile Include="Assets\Script\UI\MenuController.cs" />
+    <Compile Include="Assets\Script\UI\ResultMenu.cs" />
+    <Compile Include="Assets\Script\UI\SettingMenu.cs" />
+    <Compile Include="Assets\Script\UI\StartMenu.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/james/Desktop/AGDA-Mobile/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

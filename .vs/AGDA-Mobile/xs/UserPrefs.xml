@@ -1,11 +1,15 @@
 ﻿<Properties StartupConfiguration="{259CEB52-D68C-E024-CD2D-F4E350882C3E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/TerrainGen.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Player.cs">
     <Files>
-      <File FileName="Assets/Script/InputController.cs" Line="30" Column="10" />
-      <File FileName="Assets/Script/GameController.cs" Line="19" Column="38" />
-      <File FileName="Assets/Script/Player.cs" Line="34" Column="44" />
-      <File FileName="Assets/Script/MonobehaviorSingleton.cs" Line="11" Column="35" />
-      <File FileName="Assets/Script/TerrainGen.cs" Line="32" Column="55" />
+      <File FileName="Assets/Script/InputController.cs" Line="23" Column="33" />
+      <File FileName="Assets/Script/GameController.cs" Line="12" Column="30" />
+      <File FileName="Assets/Script/Player.cs" Line="14" Column="45" />
+      <File FileName="Assets/Script/MonobehaviorSingleton.cs" Line="11" Column="27" />
+      <File FileName="Assets/Script/TerrainGen.cs" Line="7" Column="32" />
+      <File FileName="Assets/Script/BlockGenerator.cs" Line="16" Column="42" />
+      <File FileName="Assets/Script/UI/MenuController.cs" Line="73" Column="10" />
+      <File FileName="Assets/Script/UI/InGameMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/UI/StartMenu.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +17,8 @@
           <Node name="AGDA-Mobile" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
-                <Node name="TerrainGen.cs" selected="True" />
+                <Node name="UI" expanded="True" />
+                <Node name="Player.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -23,7 +28,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c9563ed3-9ed2-43fe-9dc0-a1e38f13ffc1" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="44b44ebf-0692-4e48-b749-107bcc98249f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

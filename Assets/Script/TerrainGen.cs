@@ -17,7 +17,7 @@ public class TerrainGen : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         xSpawnPoint = screenBounds.x + 5f;
 
-        grassBlock = Resources.Load<GameObject>("Prefab/Grass");
+        grassBlock = Resources.Load<GameObject>("Prefab/SpawnBlock");
         float xGB = 0;
         while (xGB < xSpawnPoint)
         {
