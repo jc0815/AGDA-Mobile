@@ -55,6 +55,8 @@
      <Compile Include="Assets\Script\UI\ResultMenu.cs" />
      <Compile Include="Assets\Script\UI\SettingMenu.cs" />
      <Compile Include="Assets\Script\UI\StartMenu.cs" />
+     <Compile Include="Assets\Script\winton\bullet.cs" />
+     <Compile Include="Assets\Script\winton\PlayerControl.cs" />
      <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/winton/AGDA-Mobile/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

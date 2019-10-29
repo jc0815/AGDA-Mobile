@@ -71,7 +71,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         this.inGameMenu = inGameMenu;
         inGameMenu.SpawnButton.onClick.AddListener(delegate
         {
-            Player.Instance.CreateBlock();
+            //Player.Instance.CreateBlock();
         });
     }
 

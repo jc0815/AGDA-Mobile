@@ -24,7 +24,7 @@ public class InputController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Player.Instance.DeleteBlock();
+            //Player.Instance.DeleteBlock();
         }
     }
 }
