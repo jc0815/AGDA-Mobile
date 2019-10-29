@@ -1,7 +1,16 @@
 Base path: '/Applications/Unity/Hub/Editor/2019.2.9f1/Unity.app/Contents', plugins path '/Applications/Unity/Hub/Editor/2019.2.9f1/Unity.app/Contents/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileSnippet
-  api=14 type=0 insize=1396 outsize=1653 kw=UNITY_PASS_FORWARDBASE _ALPHABLEND_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Unhandled exception: Protocol error - unexpected end of data (did the Editor crash?)
-
-Quitting shader compiler process
+Cmd: compileComputeKernel
+  api=14 insize=1176 outsize=1348 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=1348 outsize=1429 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=11222 outsize=18583 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=18299 outsize=9505 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=9678 outsize=16573 ok=1
+Cmd: translateComputeKernel
+  api=14 insize=11742 outsize=25434 ok=1
+Cmd: compileComputeKernel
+  api=14 insize=1454 outsize=1199 ok=1
