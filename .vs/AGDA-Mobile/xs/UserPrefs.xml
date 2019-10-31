@@ -1,15 +1,7 @@
 ﻿<Properties StartupConfiguration="{259CEB52-D68C-E024-CD2D-F4E350882C3E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Controller/InputController.cs">
     <Files>
-      <File FileName="Assets/Script/InputController.cs" Line="23" Column="33" />
-      <File FileName="Assets/Script/GameController.cs" Line="12" Column="30" />
-      <File FileName="Assets/Script/Player.cs" Line="14" Column="45" />
-      <File FileName="Assets/Script/MonobehaviorSingleton.cs" Line="11" Column="27" />
-      <File FileName="Assets/Script/TerrainGen.cs" Line="7" Column="32" />
-      <File FileName="Assets/Script/BlockGenerator.cs" Line="16" Column="42" />
-      <File FileName="Assets/Script/UI/MenuController.cs" Line="73" Column="10" />
-      <File FileName="Assets/Script/UI/InGameMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/UI/StartMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/Controller/InputController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,8 +9,11 @@
           <Node name="AGDA-Mobile" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
+                <Node name="Controller" expanded="True">
+                  <Node name="InputController.cs" selected="True" />
+                </Node>
+                <Node name="Generator" expanded="True" />
                 <Node name="UI" expanded="True" />
-                <Node name="Player.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -28,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="44b44ebf-0692-4e48-b749-107bcc98249f" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6ec4f0e2-7a1b-4658-b63c-176121e11e4e" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
