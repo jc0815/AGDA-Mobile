@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// -------------------------
+// Game Controller:
+// - Controls the game
+// - Initializes menu controller
+// - Initializes sound manager
+// -------------------------
 public class GameController : MonobehaviorSingleton<GameController>
 { 
     private GameObject playerPrefab;
     private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {

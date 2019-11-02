@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// -------------------------
+// Bottom Obstacle Generator:
+// - Controls the bottom obstacle
+// -------------------------
 public class BottomObstacleGenerator : MonobehaviorSingleton<BottomObstacleGenerator>
 {
     // Start is called before the first frame update
@@ -11,7 +15,9 @@ public class BottomObstacleGenerator : MonobehaviorSingleton<BottomObstacleGener
     }
 
     // Update is called once per frame
-    void Update()
+    // TODO: Instantiate obstacle blocks on top of the ground
+    // TODO: Implement algorithm to spawn different obstacles at different times
+    void FixedUpdate()
     {
         
     }

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// -------------------------
+// Ground Generator:
+// - Controls the ground generation
+// -------------------------
 public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
 {
     // Start is called before the first frame update
@@ -11,7 +15,9 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     }
 
     // Update is called once per frame
-    void Update()
+    // TODO: Generate a block every frame
+    // TODO: Implement a break every k-th block
+    void FixedUpdate()
     {
         
     }

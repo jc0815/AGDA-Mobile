@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// -------------------------
+// Menu Controller:
+// - Controls result, start, 
+//     setting, game menu
+// -------------------------
 public class MenuController : MonobehaviorSingleton<MenuController>
 {
     private GameObject inGamePrefab;
