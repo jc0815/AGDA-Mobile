@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{259CEB52-D68C-E024-CD2D-F4E350882C3E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Util/GameConstants.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Controller/Player.cs">
     <Files>
       <File FileName="Assets/Script/Controller/InputController.cs" Line="10" Column="6" />
       <File FileName="Assets/Script/Controller/GameController.cs" Line="5" Column="1" />
       <File FileName="Assets/Script/UI/MenuController.cs" Line="6" Column="1" />
       <File FileName="Assets/Script/Controller/SoundManager.cs" Line="5" Column="1" />
       <File FileName="Assets/Script/Generator/GroundGenerator.cs" Line="32" Column="1" />
-      <File FileName="Assets/Script/Generator/BottomObstacleGenerator.cs" Line="5" Column="1" />
+      <File FileName="Assets/Script/Generator/BottomObstacleGenerator.cs" Line="23" Column="6" />
       <File FileName="Assets/Script/Generator/TopObstacleGenerator.cs" Line="22" Column="6" />
-      <File FileName="Assets/Script/Controller/Player.cs" Line="14" Column="28" />
+      <File FileName="Assets/Script/Controller/Player.cs" Line="60" Column="6" />
       <File FileName="Assets/Script/winton/PlayerControl.cs" Line="22" Column="32" />
       <File FileName="Assets/Script/winton/bullet.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Util/GameConstants.cs" Line="10" Column="21" />
+      <File FileName="Assets/Script/Util/GameConstants.cs" Line="7" Column="49" />
       <File FileName="Assets/Script/UI/SettingMenu.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -20,13 +20,13 @@
           <Node name="AGDA-Mobile" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
-                <Node name="Controller" expanded="True" />
+                <Node name="Controller" expanded="True">
+                  <Node name="Player.cs" selected="True" />
+                </Node>
                 <Node name="Enum" expanded="True" />
                 <Node name="Generator" expanded="True" />
                 <Node name="UI" expanded="True" />
-                <Node name="Util" expanded="True">
-                  <Node name="GameConstants.cs" selected="True" />
-                </Node>
+                <Node name="Util" expanded="True" />
                 <Node name="winton" expanded="True" />
               </Node>
             </Node>

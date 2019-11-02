@@ -10050,7 +10050,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.9257143, y: 2.9257143}
+    oldSize: {x: 2.0897958, y: 2.0897958}
     newSize: {x: 2.9257143, y: 2.9257143}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10494,7 +10494,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.4846154, y: 0.4846154, z: 0}
+  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
