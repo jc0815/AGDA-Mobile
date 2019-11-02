@@ -15,10 +15,17 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     }
 
     // Update is called once per frame
-    // TODO: Generate a block every frame
-    // TODO: Implement a break every k-th block
     void FixedUpdate()
     {
-        
+        GenerateGroundBlock();
+    }
+
+    // Generates ground block
+    // TODO: 1) Generate a block every frame
+    // TODO: 2) Move block towards the left
+    // TODO: 3) Implement a break every k-th block
+    void GenerateGroundBlock()
+    {
+
     }
 }

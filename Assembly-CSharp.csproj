@@ -64,9 +64,9 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Controller\GameController.cs" />
     <Compile Include="Assets\Script\Controller\InputController.cs" />
+    <Compile Include="Assets\Script\Controller\Player.cs" />
     <Compile Include="Assets\Script\Controller\SoundManager.cs" />
     <Compile Include="Assets\Script\Enum\Music.cs" />
-    <Compile Include="Assets\Script\Enum\NewBehaviourScript.cs" />
     <Compile Include="Assets\Script\Generator\BottomObstacleGenerator.cs" />
     <Compile Include="Assets\Script\Generator\GroundGenerator.cs" />
     <Compile Include="Assets\Script\Generator\TopObstacleGenerator.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="Assets\Script\UI\ResultMenu.cs" />
     <Compile Include="Assets\Script\UI\SettingMenu.cs" />
     <Compile Include="Assets\Script\UI\StartMenu.cs" />
+    <Compile Include="Assets\Script\Util\GameConstants.cs" />
     <Compile Include="Assets\Script\Util\MonobehaviorSingleton.cs" />
     <Compile Include="Assets\Script\winton\bullet.cs" />
     <Compile Include="Assets\Script\winton\PlayerControl.cs" />
