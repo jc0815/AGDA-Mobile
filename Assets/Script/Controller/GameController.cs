@@ -12,13 +12,13 @@ public class GameController : MonobehaviorSingleton<GameController>
 { 
     private GameObject playerPrefab;
     private GameObject player;
+    private GameObject blockPrefab;
+    private GameObject groundBlock;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerPrefab = Resources.Load<GameObject>("Prefab/Player");
-        player = Instantiate(playerPrefab);
-        player.transform.position = new Vector3(0, 5, 0);
+        SpawnTiles();
     }
 
     // Update is called once per frame
@@ -30,5 +30,22 @@ public class GameController : MonobehaviorSingleton<GameController>
             player = Instantiate(playerPrefab);
             player.transform.position = new Vector3(0, 5, 0);
         }
+    }
+
+    public void SpawnPlayer()
+    {
+        playerPrefab = Resources.Load<GameObject>("Prefab/Player");
+        player = Instantiate(playerPrefab);
+        player.transform.position = new Vector3(0, 5, 0);
+    }
+    public void SpawnTiles()
+    {
+        blockPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
+        for (int i = 0; i < 10; i++)
+        {
+            groundBlock = Instantiate(blockPrefab);
+            groundBlock.transform.position = new Vector3(0, i, 0);
+        }
+       
     }
 }

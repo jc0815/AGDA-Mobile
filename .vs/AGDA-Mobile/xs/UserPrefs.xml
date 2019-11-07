@@ -1,5 +1,9 @@
 ﻿<Properties StartupConfiguration="{259CEB52-D68C-E024-CD2D-F4E350882C3E}|">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Controller/GameController.cs">
+    <Files>
+      <File FileName="Assets/Script/Controller/GameController.cs" Line="46" Column="10" />
+      <File FileName="Assets/Script/Generator/TerrainGen.cs" Line="15" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
