@@ -10,5 +10,5 @@ public static class GameConstants
     public static int PLAYER_LIFE = 1;
     public static int PERFECT_MULTIPLIER = 5;
     public static int LOAD_WEAPON_TIME = 10;
-    public static int MAX_STACK = 10;
+    public static int MAX_STACK = 9;
 }

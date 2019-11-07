@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Controller\GameController.cs" />
     <Compile Include="Assets\Script\Controller\InputController.cs" />
+    <Compile Include="Assets\Script\Controller\MenuController.cs" />
     <Compile Include="Assets\Script\Controller\Player.cs" />
     <Compile Include="Assets\Script\Controller\SoundManager.cs" />
     <Compile Include="Assets\Script\Enum\Music.cs" />
@@ -73,7 +74,6 @@
     <Compile Include="Assets\Script\Generator\TopObstacleGenerator.cs" />
     <Compile Include="Assets\Script\UI\GameMenu.cs" />
     <Compile Include="Assets\Script\UI\InGameMenu.cs" />
-    <Compile Include="Assets\Script\UI\MenuController.cs" />
     <Compile Include="Assets\Script\UI\ResultMenu.cs" />
     <Compile Include="Assets\Script\UI\SettingMenu.cs" />
     <Compile Include="Assets\Script\UI\StartMenu.cs" />

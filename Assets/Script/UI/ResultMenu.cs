@@ -14,9 +14,9 @@ public class ResultMenu : GameMenu
     {
         RestartButton = gameObject.transform.Find("RestartButton").GetComponent<Button>();
         ReviveButton = gameObject.transform.Find("ReviveButton").GetComponent<Button>();
-        BestImage = gameObject.transform.Find("Images").Find("BestImage").GetComponent<Image>();
-        CurrentImage = gameObject.transform.Find("Images").Find("CurrentImage").GetComponent<Image>();
-        BestScore = gameObject.transform.Find("Images").Find("BestScore").GetComponent<Text>();
-        CurrentScore = gameObject.transform.Find("Images").Find("CurrentScore").GetComponent<Text>();
+        //BestImage = gameObject.transform.Find("Images").Find("BestImage").GetComponent<Image>();
+        //CurrentImage = gameObject.transform.Find("Images").Find("CurrentImage").GetComponent<Image>();
+        //BestScore = gameObject.transform.Find("Images").Find("BestScore").GetComponent<Text>();
+        //CurrentScore = gameObject.transform.Find("Images").Find("CurrentScore").GetComponent<Text>();
     }
 }

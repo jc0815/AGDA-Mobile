@@ -15,7 +15,9 @@ public class MenuController : MonobehaviorSingleton<MenuController>
     private GameObject startPrefab;
     private GameObject settingPrefab;
     private GameObject canvasPrefab;
+    private GameObject eventPrefab;
     private Canvas canvas;
+    private GameObject eventSystem;
     private List<GameMenu> activeMenus;
     private GameMenu inGameMenu;
 
@@ -26,6 +28,8 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         startPrefab = Resources.Load<GameObject>("Prefab/UIPrefab/StartPrefab");
         settingPrefab = Resources.Load<GameObject>("Prefab/UIPrefab/SettingPrefab");
         canvasPrefab = Resources.Load<GameObject>("Prefab/UIPrefab/Canvas");
+        eventPrefab = Resources.Load<GameObject>("Prefab/UIPrefab/EventSystem");
+
         activeMenus = new List<GameMenu>();
     }
 
@@ -40,6 +44,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         {
             Debug.Log("Clicked");
             DestroyMenu(startMenu);
+            this.gameObject.AddComponent<GameController>();
             Validate(inGamePrefab);
         });
 
@@ -76,7 +81,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         this.inGameMenu = inGameMenu;
         inGameMenu.SpawnButton.onClick.AddListener(delegate
         {
-            //Player.Instance.CreateBlock();
+            Player.Instance.Stack();
         });
     }
 
@@ -120,6 +125,19 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         }
     }
 
+    private void SpawnEventSystem()
+    {
+            if (eventSystem == null)
+            {
+                eventSystem = GameObject.Find("EventSystem");
+            Debug.Log(eventSystem);
+                if (eventSystem == null)
+                {
+                    eventSystem = Instantiate(eventPrefab);
+                }
+            }
+    }
+
     private void Validate(GameObject prefab)
     {
         GameMenu menu = prefab.GetComponent<GameMenu>();
@@ -143,6 +161,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
     public void CreateMenu(GameMenu menu)
     {
         GameObject menuObject = Instantiate(menu.gameObject, SceneCanvas.transform);
+        SpawnEventSystem();
         GameMenu menuComponent = menuObject.GetComponent<GameMenu>();
         System.Type type = menuComponent.GetType();
 
