@@ -1,0 +1,45 @@
+https://learn.unity.com/tutorial/live-trainings-on-audio#5c7f8528edbc2a002053b508
+
+BACKGROUND MUSIC
+
+Create Music folder and put MP3 file into it
+Go to any object (can be main camera) add Audio Source component, drag MP3 file into the audio source component.
+Turn on Play On Awake and Loop (play over again when finished)
+
+FOR SHOOTING EFFECTS/MOVEMENT EFFECTS OF MAIN SPRITE
+//declare fields above 
+private AudioSource source;
+public AudioClip <clipname>;
+
+//can have multiple clipnames, just make sure to drag MP3 file into the component 
+public AudioClip <clipname1>;
+public AudioClip <clipname2>;
+
+//in Awake() or Start() make sure to initialize source
+source = GetComponent<AudioSource>();
+
+//place this in whenever a key is pressed and in audio source componenet, make sure to drag MP3 file into public field clipname
+source.PlayOneShot(<clipname>, <volume>);
+
+//can add randomness to sound with 
+private float volLowRange = 0.5f;
+private float volHighRange = 1.0f;
+float vol = Random.Rang(volLowRange, volHighRange);
+source.PlayOneShot(<clipname>, vol);
+
+SOUNDS IN OUR GAME
+- bullet firing --> as fire faster pitch increases 
+- background music
+  --> maybe music can speed up or change to more intense beats when playing the game for longer 
+- sprite collision into obstacle
+- sprite jumping
+- game over sound
+- bullet collision into obstacle 
+- main menu music
+- main menu button interactable music 
+- settings menu
+  --> for sound off button, need some way to turn off all music 
+- perfect landing sound 
+- different sound effects could incoporate like (echo, reverb using send and receive effects)
+
+
