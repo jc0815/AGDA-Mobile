@@ -20,7 +20,8 @@ public class MenuController : MonobehaviorSingleton<MenuController>
     private GameObject eventSystem;
     private List<GameMenu> activeMenus;
     private GameMenu inGameMenu;
-
+    private Text scoreText;
+    private int currentScore;
     void Awake()
     {
         inGamePrefab = Resources.Load<GameObject>("Prefab/UIPrefab/InGamePrefab");
@@ -44,6 +45,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         {
             Debug.Log("Clicked");
             DestroyMenu(startMenu);
+            this.gameObject.AddComponent<ScoreController>();
             this.gameObject.AddComponent<GameController>();
             Validate(inGamePrefab);
         });
@@ -79,6 +81,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
     public void AddInGameMenuFunctionality(InGameMenu inGameMenu)
     {
         this.inGameMenu = inGameMenu;
+        scoreText = inGameMenu.ScoreText;
         inGameMenu.SpawnButton.onClick.AddListener(delegate
         {
             Player.Instance.Stack();
@@ -102,8 +105,14 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         });
     }
 
+    public void UpdateScore(int score)
+    {
+        scoreText.text = (score*GameConstants.SCORE_MULTIPLIER_BY_TIME).ToString();
+    }
     public void GameEnd()
     {
+        currentScore = ScoreController.Instance.GetCurrentScore();
+        Destroy(GetComponent<ScoreController>());
         DestroyMenu(inGameMenu);
         Validate(resultPrefab);
         //PAUSE FUNCTION IMPLEMENTATION
