@@ -35,9 +35,14 @@ public class Player : MonobehaviorSingleton<Player>
             Dead();
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-       
+        Debug.Log("ENTERED");
+
+        if (other.gameObject.tag == "bullet") // this string is your newly created tag
+        {
+            MenuController.Instance.GameEnd();
+        }
     }
 
     // When character dies lmao

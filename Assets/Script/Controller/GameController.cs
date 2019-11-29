@@ -15,10 +15,12 @@ public class GameController : MonobehaviorSingleton<GameController>
     private GameObject backGroundPrefab;
     private GameObject blockPrefab;
     private GameObject groundBlock;
+    private GameObject stack;
+    private GameObject ground;
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         blockPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
         playerPrefab = Resources.Load<GameObject>("Prefab/Player");
         backGroundPrefab = Resources.Load<GameObject>("Prefab/Background");
@@ -43,8 +45,9 @@ public class GameController : MonobehaviorSingleton<GameController>
 
     public void SpawnStack()
     {
-        GameObject stacks = Instantiate(new GameObject());
-        stacks.name = "Stack";
+        stack = new GameObject("Stack");
+        Rigidbody2D r = stack.AddComponent<Rigidbody2D>();
+
     }
 
     public void SpawnPlayer()
@@ -63,13 +66,12 @@ public class GameController : MonobehaviorSingleton<GameController>
     //Testing purpose
     public void SpawnGround()
     {
-        GameObject grounds = Instantiate(new GameObject());
-        grounds.name = "Ground";
+        ground = new GameObject("Ground");
         for (int i = 0; i < 18; i++)
         {
             groundBlock = Instantiate(blockPrefab);
             groundBlock.transform.position = new Vector3(i, 0, 0);
-            groundBlock.transform.parent = grounds.transform;
+            groundBlock.transform.parent = ground.transform;
         }
     }
 }

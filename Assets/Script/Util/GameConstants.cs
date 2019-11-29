@@ -1,6 +1,8 @@
 ﻿using System;
 public static class GameConstants
 {
+    public static int SCORE_MULTIPLIER_BY_TIME = 10;
+
     // Obstacle / Gound:
     public static int BLOCK_VELOCITY = 5;
     public static int BLOCK_BREAK = 3;
