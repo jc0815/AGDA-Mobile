@@ -2,29 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// -------------------------
-// Top Obstacle Generator:
-// - Controls the top obstacle
-// -------------------------
-public class TopObstacleGenerator : MonobehaviorSingleton<TopObstacleGenerator>
+public class BlockGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public GameObject block;
-    public int width = 5;
-    public int height = 5;
-    public bool[] blocks = new bool[25];
+    public static int width = 20;
+    public static int height = 10;
+    public GameObject[,] blocks = new GameObject[width,height];
     // Start is called before the first frame update
     void Generate(){
         
-        for (int y=0; y<width; ++y)
+        for (int y=0; y<height; ++y)
        {
-           for (int x=0; x<height; ++x)
+           for (int x=0; x<width; ++x)
            {
-               blocks[x + 5 * y] = false;
                Debug.Log("the x is " + x +" the number is " + x + 5 * y);
                bool isGenerate = Random.Range(1,3) > 1 ? true : false;
                if(y == 0 && isGenerate){
@@ -39,11 +29,17 @@ public class TopObstacleGenerator : MonobehaviorSingleton<TopObstacleGenerator>
        } 
        
     }
+    bool hasNeighbour(int x , int y){
+        
+        return false;
+    }
+    void Start()
+    {
+        Generate();
+    }
+
     // Update is called once per frame
-    // TODO: Instantiate obstacle blocks on the view ceiling
-    // TODO: Checks bottom obstacle to make sure the total view height > obstacle height
-    // TODO: Implement algorithm to spawn different obstacles at different times
-    void FixedUpdate()
+    void Update()
     {
         
     }
