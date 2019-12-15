@@ -30,6 +30,7 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
     private int width = 18;
     private int height = 10;
     public bool[,] blocks = new bool[21,13];
+    public bool[,] topBlocks = new bool[21,13];
     // Start is called before the first frame update
     void Generate(){
         //from boottom to up
@@ -54,29 +55,33 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
        //from up to bottom
        for(int y = height - 1; y >0; y --){
            for(int x = width - 1; x>0;x--){
+               topBlocks[x,y] = false;
                Debug.Log("the x is " + x +" the y is " + y);
                bool isGenerate = Random.Range(1,3) > 1 ? true : false;
                if(y == height - 1 && isGenerate){
                    Instantiate(blocktwo, new Vector3(x,y+1,0), Quaternion.identity);
-                   blocks[x,y] = true;
+                   topBlocks[x,y] = true;
                }
                if(y != 0 && hasNeighborUp(x,y) && isGenerate ){
                    Debug.Log("the y is "+ y);
                    Instantiate(blocktwo, new Vector3(x,y+1,0), Quaternion.identity);
-                   blocks[x,y] = true;
+                   topBlocks[x,y] = true;
                }
            }
        }
     }
     bool hasNeighborUp(int x, int y){
+        if(hasNeighborBottom(x,y)){
+            return false;
+        }
         if(y >= 2 && blocks[x,y -2 ] == true){
             return false;
         }
-        if(blocks[x,y + 1] == true){
+        if(topBlocks[x,y + 1] == true){
             return true;
         }else if(x == 0){
             return false;
-        }else if(blocks[x-1,y]==true && blocks[x-1,y+1]==true){
+        }else if(topBlocks[x-1,y]==true){
             return true;
         }
         return false;
