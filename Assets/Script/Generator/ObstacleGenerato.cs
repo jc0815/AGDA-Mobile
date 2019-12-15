@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // -------------------------
-// Top Obstacle Generator:
+// Bottom Obstacle Generator:
 // - Controls the top obstacle
 // -------------------------
-public class TopObstacleGenerator : MonobehaviorSingleton<TopObstacleGenerator>
+public class BottomObstacleGenerator : MonobehaviorSingleton<BottomObstacleGenerator>
 {
     // Start is called before the first frame update
     void Start()
+    {
+        //Generate();
+        block = Resources.Load<GameObject>("Prefab/GroundBlock");
+    }
+
+    // Update is called once per frame
+    // TODO: Instantiate obstacle blocks on the view ceiling
+    // TODO: Checks bottom obstacle to make sure the total view height > obstacle height
+    // TODO: Implement algorithm to spawn different obstacles at different times
+    void FixedUpdate()
     {
         
     }
@@ -39,12 +49,12 @@ public class TopObstacleGenerator : MonobehaviorSingleton<TopObstacleGenerator>
        } 
        
     }
+
     // Update is called once per frame
-    // TODO: Instantiate obstacle blocks on the view ceiling
-    // TODO: Checks bottom obstacle to make sure the total view height > obstacle height
-    // TODO: Implement algorithm to spawn different obstacles at different times
-    void FixedUpdate()
+    void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.G)){
+            Debug.Log("pressed G");
+        }
     }
 }
