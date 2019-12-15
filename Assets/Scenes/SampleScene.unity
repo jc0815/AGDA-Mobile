@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &126043655
 Transform:
   m_ObjectHideFlags: 0
@@ -9913,7 +9913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0207762f16b3d43cb8d7ad30a09f0b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 2953214276850334309, guid: ac991f7d8f18649ae92ca811b18977a4, type: 3}
+  block: {fileID: 0}
 --- !u!212 &1218452411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10204,9 +10204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f4a41842d464221b288d610a63a44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1510834002}
-  firePoint: {fileID: 2020730671}
-  bullet: {fileID: 8429847052679812045, guid: 27e63a55b2e3847a893b984e27b3d618, type: 3}
+  animator: {fileID: 0}
+  firePoint: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!114 &1510834004
 MonoBehaviour:
   m_ObjectHideFlags: 0
