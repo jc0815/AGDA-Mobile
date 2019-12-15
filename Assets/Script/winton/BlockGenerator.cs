@@ -19,12 +19,12 @@ public class BlockGenerator : MonoBehaviour
                bool isGenerate = Random.Range(1,3) > 1 ? true : false;
                if(y == 0 && isGenerate){
                    Instantiate(block, new Vector3(x,y,0), Quaternion.identity);
-                   blocks[x + 5 * y] = true;
+                   //blocks[x + 5 * y] = true;
                }
-               if(y != 0 && blocks[x + 5 * (y - 1)] == true && isGenerate){
+               //if(y != 0 && blocks[x + 5 * (y - 1)] == true && isGenerate){
                    Instantiate(block, new Vector3(x,y,0), Quaternion.identity);
-                   blocks[x + 5 * y] = true;
-               }
+                   //blocks[x + 5 * y] = true;
+               //}
            }
        } 
        
