@@ -19,7 +19,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     private float spawnPoint;
     private bool called = false;
     // no terrain every k-th block
-    private int k = 5;
+    private int k = 3;
 
     void Awake()
     {
@@ -95,5 +95,26 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
         }
     
     }
-    
+
+    public void genFirstSet()
+    {
+        float startpoint = screenBounds.x;
+        setTer();
+        for (int i = 0; i < listLen; i++)
+        {
+            if ((i + 1) % k == 0)
+            {
+                startpoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
+            }
+
+            else
+            {
+                GameObject block = Instantiate(spawnItems[i], new Vector3(startpoint, 0, 0), Quaternion.identity);
+                block.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
+                startpoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
+            }
+        }
+
+    }
+
 }
