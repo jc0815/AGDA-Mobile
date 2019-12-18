@@ -56,7 +56,9 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
         {
             var ground = Instantiate(groundPrefab, new Vector3(spawnPoint, 0, 0), Quaternion.identity);
             Destroy(ground);
-            spawnItems.Add(ground);            
+            spawnItems.Add(ground);
+            spawnItems[i].GetComponent<BoxCollider2D>().enabled = true;
+
             if (i == listLen - 1)
                 if (spawnItems[i].GetComponent<GroundGenerator>() == null)
                     spawnItems[i].AddComponent<GroundGenerator>();
