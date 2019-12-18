@@ -19,14 +19,14 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     private float spawnPoint;
     private bool called = false;
     // no terrain every k-th block
-    private int k = 3;
+    private int k = 5;
 
     void Awake()
     {
         groundPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        listLen = (int)((screenBounds.x + 4) / (groundPrefab.GetComponent<SpriteRenderer>().size.x));
-        spawnPoint = screenBounds.x + 4;
+        listLen = (int)(((2*screenBounds.x) + 4) / (groundPrefab.GetComponent<SpriteRenderer>().size.x));
+        spawnPoint = screenBounds.x + 2;
     }
 
     void Start()
@@ -98,10 +98,12 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
 
     public void genFirstSet()
     {
-        float startpoint = screenBounds.x;
+        float startpoint = -screenBounds.x;
         setTer();
-        for (int i = 0; i < listLen; i++)
+        int i = 0;
+        while (startpoint < spawnPoint)
         {
+
             if ((i + 1) % k == 0)
             {
                 startpoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
@@ -113,6 +115,10 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
                 block.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
                 startpoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
             }
+            if (i != listLen - 1)
+                i++;
+            else i = 0;
+              
         }
 
     }
