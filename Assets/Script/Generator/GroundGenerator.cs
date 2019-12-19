@@ -19,7 +19,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     private float spawnPoint = 0;
     private bool called = false;
     // no terrain every k-th block
-    private int k = 3;
+    private int k = 7;
 
     void Awake()
     {
@@ -61,18 +61,25 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
 
             if (i == listLen - 1)
             {
-                if (spawnItems[i].GetComponent<GroundGenerator>() == null)
-                    spawnItems[i].AddComponent<GroundGenerator>();
                 if ((i + 1) % k == 0) //if last item won't be generated, previous block has script attached
                 {
                     if (spawnItems[i - 1].GetComponent<GroundGenerator>() == null)
                     {
                         spawnItems[i - 1].AddComponent<GroundGenerator>();
-                        spawnItems[i - 1].GetComponent<GroundGenerator>().spawnPoint = 
-                            spawnItems[i - 1].GetComponent<BoxCollider2D>().size.x / 2;
+                        spawnItems[i - 1].AddComponent<GroundGenerator>().spawnPoint += 
+                            spawnItems[i-1].GetComponent<BoxCollider2D>().size.x / 2;
+
                     }
 
                 }
+                else 
+                {
+                    if (spawnItems[i].GetComponent<GroundGenerator>() == null)
+                    {
+                        spawnItems[i].AddComponent<GroundGenerator>();
+                    }
+                }
+
 
             }
            
