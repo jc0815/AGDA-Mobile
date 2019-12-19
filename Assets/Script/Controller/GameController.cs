@@ -27,9 +27,14 @@ public class GameController : MonobehaviorSingleton<GameController>
 
         SpawnBackGround();
         SpawnPlayer();
-        SpawnGround();
         SpawnStack();
 
+        // Set up auto-generating ground:
+        // 1) Uncomment SpawnGround, comment SpawnGroundDefault
+        // 2) Attach GroundGenerator script to Game Scene
+        // 3) Change GroundBlock prefab from static to kinematic
+        // SpawnGround();
+        SpawnGroundDefault(); 
     }
 
     // Update is called once per frame
@@ -64,7 +69,7 @@ public class GameController : MonobehaviorSingleton<GameController>
     }
 
     //Testing purpose
-    public void SpawnGround()
+    public void SpawnGroundDefault()
     {
         ground = new GameObject("Ground");
         for (int i = 0; i < 18; i++)
@@ -73,5 +78,10 @@ public class GameController : MonobehaviorSingleton<GameController>
             groundBlock.transform.position = new Vector3(i, 0, 0);
             groundBlock.transform.parent = ground.transform;
         }
+    }
+
+    public void SpawnGround()
+    {
+        this.GetComponent<GroundGenerator>().genFirstSet();
     }
 }
