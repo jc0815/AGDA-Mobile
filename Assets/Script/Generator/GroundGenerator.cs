@@ -16,17 +16,24 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
 
     private float speed = 10.0f;
     private float whenToDissappear;
-    private float spawnPoint = 0;
+    public float spawnPoint = 0;
     private bool called = false;
     // no terrain every k-th block
-    private int k = 7;
+    private int k = 3;
+    private float gap_width;
 
     void Awake()
     {
         groundPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         listLen = (int)(((2*screenBounds.x) + 4) / (groundPrefab.GetComponent<SpriteRenderer>().size.x));
-        spawnPoint += screenBounds.x + 2;
+        if (spawnPoint > 0)
+        {
+            spawnPoint = (screenBounds.x + 2 + groundPrefab.GetComponent<SpriteRenderer>().size.x);
+        }
+        else
+            spawnPoint = screenBounds.x + 2;
+        
     }
 
     void Start()
@@ -54,23 +61,21 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
         spawnItems = new List<GameObject>();
         for (int i = 0; i < listLen; i++)
         {
-            var ground = Instantiate(groundPrefab, new Vector3(spawnPoint, 0, 0), Quaternion.identity);
-            Destroy(ground);
+            GameObject ground = Instantiate(groundPrefab, new Vector3(spawnPoint, 0, 0), Quaternion.identity);
             spawnItems.Add(ground);
+            Destroy(ground);
             spawnItems[i].GetComponent<BoxCollider2D>().enabled = true;
 
             if (i == listLen - 1)
-            {
+            {                
                 if ((i + 1) % k == 0) //if last item won't be generated, previous block has script attached
                 {
                     if (spawnItems[i - 1].GetComponent<GroundGenerator>() == null)
                     {
                         spawnItems[i - 1].AddComponent<GroundGenerator>();
-                        spawnItems[i - 1].GetComponent<GroundGenerator>().spawnPoint += 
-                            spawnItems[i-1].GetComponent<BoxCollider2D>().size.x / 2;
-
+                        spawnItems[i - 1].GetComponent<GroundGenerator>().spawnPoint = 
+                            spawnItems[i - 1].GetComponent<BoxCollider2D>().size.x;                        
                     }
-
                 }
                 else 
                 {
@@ -79,11 +84,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
                         spawnItems[i].AddComponent<GroundGenerator>();
                     }
                 }
-
-
             }
-           
-
         }
     }
 
@@ -100,11 +101,10 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
             {
                 GameObject block = Instantiate(spawnItems[i], new Vector3(spawnPoint, 0, 0), Quaternion.identity);
                 block.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
-                spawnPoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
+                spawnPoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x/2;
             }
         }
         called = true;
-        
     }
 
     public void Destroy() //destroy object after it passes a certian point
@@ -140,8 +140,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
             }
             if (i != listLen - 1)
                 i++;
-            else i = 0;
-              
+            else i = 0;              
         }
 
     }
