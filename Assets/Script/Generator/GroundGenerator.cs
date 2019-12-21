@@ -66,7 +66,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
                     if (spawnItems[i - 1].GetComponent<GroundGenerator>() == null)
                     {
                         spawnItems[i - 1].AddComponent<GroundGenerator>();
-                        spawnItems[i - 1].AddComponent<GroundGenerator>().spawnPoint += 
+                        spawnItems[i - 1].GetComponent<GroundGenerator>().spawnPoint += 
                             spawnItems[i-1].GetComponent<BoxCollider2D>().size.x / 2;
 
                     }
