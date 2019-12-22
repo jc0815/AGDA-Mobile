@@ -19,21 +19,18 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     public float spawnPoint = 0;
     private bool called = false;
     // no terrain every k-th block
-    private int k = 3;
+    private int k = 4;
     private float gap_width;
 
     void Awake()
     {
         groundPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
+        groundPrefab.GetComponent<BoxCollider2D>().enabled = true;
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        listLen = (int)(((2*screenBounds.x) + 4) / (groundPrefab.GetComponent<SpriteRenderer>().size.x));
-        if (spawnPoint > 0)
-        {
-            spawnPoint = (screenBounds.x + 2 + groundPrefab.GetComponent<SpriteRenderer>().size.x);
-        }
-        else
-            spawnPoint = screenBounds.x + 2;
-        
+        listLen = (int)(((2 * screenBounds.x) + 4) / (groundPrefab.GetComponent<BoxCollider2D>().size.x));
+        listLen += (k - 1 - (listLen % k));
+        spawnPoint = (screenBounds.x + 2 + groundPrefab.GetComponent<BoxCollider2D>().size.x);
+
     }
 
     void Start()
@@ -47,7 +44,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
 
     void FixedUpdate()
     {
-        if (this.transform.position.x <= spawnPoint)
+        if (this.transform.position.x <= screenBounds.x + 2)
         {
             setTer();
             if (!called) // only generate ground set once
@@ -67,24 +64,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
             spawnItems[i].GetComponent<BoxCollider2D>().enabled = true;
 
             if (i == listLen - 1)
-            {                
-                if ((i + 1) % k == 0) //if last item won't be generated, previous block has script attached
-                {
-                    if (spawnItems[i - 1].GetComponent<GroundGenerator>() == null)
-                    {
-                        spawnItems[i - 1].AddComponent<GroundGenerator>();
-                        spawnItems[i - 1].GetComponent<GroundGenerator>().spawnPoint = 
-                            spawnItems[i - 1].GetComponent<BoxCollider2D>().size.x;                        
-                    }
-                }
-                else 
-                {
-                    if (spawnItems[i].GetComponent<GroundGenerator>() == null)
-                    {
-                        spawnItems[i].AddComponent<GroundGenerator>();
-                    }
-                }
-            }
+                spawnItems[i].AddComponent<GroundGenerator>();
         }
     }
 
@@ -101,7 +81,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
             {
                 GameObject block = Instantiate(spawnItems[i], new Vector3(spawnPoint, 0, 0), Quaternion.identity);
                 block.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
-                spawnPoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x/2;
+                spawnPoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
             }
         }
         called = true;
@@ -116,17 +96,17 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
             if (x <= whenToDissappear)
                 Destroy(toDestroy[i]);
         }
-    
+
     }
 
     public void genFirstSet()
     {
-        float startpoint = -screenBounds.x;
+        float startpoint = 0;
+        listLen += k;
         setTer();
         int i = 0;
-        while (startpoint < spawnPoint)
+        while (i < listLen)
         {
-
             if ((i + 1) % k == 0)
             {
                 startpoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
@@ -138,9 +118,7 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
                 block.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
                 startpoint += spawnItems[i].GetComponent<BoxCollider2D>().size.x / 2;
             }
-            if (i != listLen - 1)
-                i++;
-            else i = 0;              
+            i++;
         }
 
     }
