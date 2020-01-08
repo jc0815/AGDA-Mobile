@@ -6,4 +6,6 @@ using UnityEngine;
 //Enums for music names (strings)
 public enum Music
 {
+    MainMenuMusic,
+    GameMusic, 
 }
