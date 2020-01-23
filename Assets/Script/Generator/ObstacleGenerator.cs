@@ -56,9 +56,10 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
                 }
                 if (y != 0 && hasNeighborBottom(x, y) && isGenerate)
                 {
-                    Debug.Log("the y is " + y);
-                    Instantiate(block, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    //Debug.Log("the y is " + y);
+                    GameObject childBlock = Instantiate(block, new Vector3(x, y + 1, 0), Quaternion.identity);
                     blocks[x, y] = true;
+                    childBlock.transform.SetParent(screenBlock.transform);
                 }
             }
         }
@@ -68,7 +69,7 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
             for (int x = width - 1; x > 0; x--)
             {
                 topBlocks[x, y] = false;
-                Debug.Log("the x is " + x + " the y is " + y);
+                //Debug.Log("the x is " + x + " the y is " + y);
                 bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
                 if (y == height - 1 && isGenerate)
                 {
@@ -78,9 +79,10 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
                 }
                 if (y != 0 && hasNeighborUp(x, y) && isGenerate)
                 {
-                    Debug.Log("the y is " + y);
-                    Instantiate(blocktwo, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    //Debug.Log("the y is " + y);
+                    GameObject childBlock = Instantiate(blocktwo, new Vector3(x, y + 1, 0), Quaternion.identity);
                     topBlocks[x, y] = true;
+                    childBlock.transform.SetParent(screenBlock.transform);
                 }
             }
         }
