@@ -8,90 +8,129 @@ using UnityEngine;
 // -------------------------
 public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Generate();
-        block = Resources.Load<GameObject>("Prefab/ground-individual");
-        blocktwo = Resources.Load<GameObject>("Prefab/GroundBlock");
-
-    }
-
     // Update is called once per frame
     // TODO: Instantiate obstacle blocks on the view ceiling
     // TODO: Checks bottom obstacle to make sure the total view height > obstacle height
     // TODO: Implement algorithm to spawn different obstacles at different times
-    void FixedUpdate()
-    {
-        
-    }
+    private Vector2 screenBounds;
     private GameObject block;
     private GameObject blocktwo;
-    private int width = 18;
-    private int height = 10;
-    public bool[,] blocks = new bool[21,13];
-    public bool[,] topBlocks = new bool[21,13];
+    private int width = 0;
+    private int height = 0;
+    public bool[,] blocks = new bool[21, 13];
+    public bool[,] topBlocks = new bool[21, 13];
+    private float whenToDissappear;
     // Start is called before the first frame update
-    void Generate(){
-        //from boottom to up
-        for (int y=0; y<height; ++y)
-       {
-           for (int x=0; x<width; ++x)
-           {
-               blocks[x,y] = false;
-               Debug.Log("the x is " + x +" the y is " + y);
-               bool isGenerate = Random.Range(1,3) > 1 ? true : false;
-               if(y == 0 && isGenerate){
-                   Instantiate(block, new Vector3(x,y+1,0), Quaternion.identity);
-                   blocks[x,y] = true;
-               }
-               if(y != 0 && hasNeighborBottom(x,y) && isGenerate ){
-                   Debug.Log("the y is "+ y);
-                   Instantiate(block, new Vector3(x,y+1,0), Quaternion.identity);
-                   blocks[x,y] = true;
-               }
-           }
-       } 
-       //from up to bottom
-       for(int y = height - 1; y >0; y --){
-           for(int x = width - 1; x>0;x--){
-               topBlocks[x,y] = false;
-               Debug.Log("the x is " + x +" the y is " + y);
-               bool isGenerate = Random.Range(1,3) > 1 ? true : false;
-               if(y == height - 1 && isGenerate){
-                   Instantiate(blocktwo, new Vector3(x,y+1,0), Quaternion.identity);
-                   topBlocks[x,y] = true;
-               }
-               if(y != 0 && hasNeighborUp(x,y) && isGenerate ){
-                   Debug.Log("the y is "+ y);
-                   Instantiate(blocktwo, new Vector3(x,y+1,0), Quaternion.identity);
-                   topBlocks[x,y] = true;
-               }
-           }
-       }
+
+    void Awake()
+    {
+        //Generate();
+        block = Resources.Load<GameObject>("Prefab/GroundBlock");
+        blocktwo = Resources.Load<GameObject>("Prefab/GroundBlock");
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        whenToDissappear = -1.2f * screenBounds.x;
+        width = (int)(screenBounds.x);
+        height = (int)(screenBounds.y);
+        Debug.Log("the screenBounds" + screenBounds.x);
     }
-    bool hasNeighborUp(int x, int y){
-        if(hasNeighborBottom(x,y)){
+    // Start is called before the first frame update
+    void Generate()
+    {
+        //from boottom to up
+        //Debug.Log("the width" + width);
+        for (int y = 0; y < height; ++y)
+        {
+            for (int x = 0; x < width; ++x)
+            {
+                blocks[x, y] = false;
+                //Debug.Log("the x is " + x + " the y is " + y);
+                bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
+                if (y == 0 && isGenerate)
+                {
+                    Instantiate(block, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    blocks[x, y] = true;
+                }
+                if (y != 0 && hasNeighborBottom(x, y) && isGenerate)
+                {
+                    Debug.Log("the y is " + y);
+                    Instantiate(block, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    blocks[x, y] = true;
+                }
+            }
+        }
+        //from up to bottom
+        for (int y = height - 1; y > 0; y--)
+        {
+            for (int x = width - 1; x > 0; x--)
+            {
+                topBlocks[x, y] = false;
+                Debug.Log("the x is " + x + " the y is " + y);
+                bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
+                if (y == height - 1 && isGenerate)
+                {
+                    Instantiate(blocktwo, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    topBlocks[x, y] = true;
+                }
+                if (y != 0 && hasNeighborUp(x, y) && isGenerate)
+                {
+                    Debug.Log("the y is " + y);
+                    Instantiate(blocktwo, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    topBlocks[x, y] = true;
+                }
+            }
+        }
+    }
+
+    public void Destroy() //destroy object after it passes a certian point
+    {
+        GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Ground");
+        for (int i = 0; i < toDestroy.Length; i++)
+        {
+            float x = toDestroy[i].transform.position.x;
+            if (x <= whenToDissappear)
+                Destroy(toDestroy[i]);
+        }
+
+    }
+
+
+
+    bool hasNeighborUp(int x, int y)
+    {
+        if (hasNeighborBottom(x, y))
+        {
             return false;
         }
-        if(y >= 2 && blocks[x,y -2 ] == true){
+        if (y >= 2 && blocks[x, y - 2] == true)
+        {
             return false;
         }
-        if(topBlocks[x,y + 1] == true){
+        if (topBlocks[x, y + 1] == true)
+        {
             return true;
-        }else if(x == 0){
+        }
+        else if (x == 0)
+        {
             return false;
-        }else if(topBlocks[x-1,y]==true){
+        }
+        else if (topBlocks[x - 1, y] == true)
+        {
             return true;
         }
         return false;
     }
-    bool hasNeighborBottom(int x, int y){
-        if(blocks[x,y - 1] == true){
+    bool hasNeighborBottom(int x, int y)
+    {
+        if (blocks[x, y - 1] == true)
+        {
             return true;
-        }else if (x == 0){
+        }
+        else if (x == 0)
+        {
             return false;
-        }else if (blocks[x-1,y]==true){
+        }
+        else if (blocks[x - 1, y] == true)
+        {
             return true;
         }
         return false;
@@ -99,12 +138,14 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G)){
-            Debug.Log("pressed G");
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("G is pressed");
             this.Generate();
         }
-        if(Input.GetKeyDown(KeyCode.C)){
-            blocks = new bool[21,13];
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            blocks = new bool[21, 13];
         }
     }
 }
