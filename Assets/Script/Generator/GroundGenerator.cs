@@ -13,15 +13,13 @@ public class GroundGenerator : MonobehaviorSingleton<GroundGenerator>
     private List<GameObject> spawnItems;
     private Vector2 screenBounds;
     private int listLen;
-
-    private float speed = 10.0f;
     private float whenToDissappear;
     public float spawnPoint = 0;
     private bool called = false;
     // no terrain every k-th block
     private int k = 4;
     private float gap_width;
-
+    private float speed = 10.0f;
     void Awake()
     {
         groundPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");

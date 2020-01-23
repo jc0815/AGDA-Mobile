@@ -15,11 +15,13 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
     private Vector2 screenBounds;
     private GameObject block;
     private GameObject blocktwo;
+    private GameObject screenBlock;
     private int width = 0;
     private int height = 0;
     public bool[,] blocks = new bool[21, 13];
     public bool[,] topBlocks = new bool[21, 13];
     private float whenToDissappear;
+    private float speed = 10.0f;
     // Start is called before the first frame update
 
     void Awake()
@@ -31,7 +33,8 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
         whenToDissappear = -1.2f * screenBounds.x;
         width = (int)(screenBounds.x);
         height = (int)(screenBounds.y);
-        Debug.Log("the screenBounds" + screenBounds.x);
+        screenBlock = GameObject.FindGameObjectWithTag("Obstacle");
+        Debug.Log("found screenBlock?" + screenBlock);
     }
     // Start is called before the first frame update
     void Generate()
@@ -47,8 +50,9 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
                 bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
                 if (y == 0 && isGenerate)
                 {
-                    Instantiate(block, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    GameObject childBlock = Instantiate(block, new Vector3(x, y + 1, 0), Quaternion.identity);
                     blocks[x, y] = true;
+                    childBlock.transform.SetParent(screenBlock.transform);
                 }
                 if (y != 0 && hasNeighborBottom(x, y) && isGenerate)
                 {
@@ -68,8 +72,9 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
                 bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
                 if (y == height - 1 && isGenerate)
                 {
-                    Instantiate(blocktwo, new Vector3(x, y + 1, 0), Quaternion.identity);
+                    GameObject childBlock = Instantiate(blocktwo, new Vector3(x, y + 1, 0), Quaternion.identity);
                     topBlocks[x, y] = true;
+                    childBlock.transform.SetParent(screenBlock.transform);
                 }
                 if (y != 0 && hasNeighborUp(x, y) && isGenerate)
                 {
@@ -147,5 +152,6 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
         {
             blocks = new bool[21, 13];
         }
+        screenBlock.GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
     }
 }
