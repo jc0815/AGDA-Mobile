@@ -19,4 +19,6 @@ public class ResultMenu : GameMenu
         //BestScore = gameObject.transform.Find("Images").Find("BestScore").GetComponent<Text>();
         //CurrentScore = gameObject.transform.Find("Images").Find("CurrentScore").GetComponent<Text>();
     }
+    
+    // TODO: create menu button and edit inside menu controller
 }
