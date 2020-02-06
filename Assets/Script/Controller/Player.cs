@@ -20,7 +20,7 @@ public class Player : MonobehaviorSingleton<Player>
     // Start is called before the first frame update
     public void Start()
     {
-        blockPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
+        blockPrefab = Resources.Load<GameObject>("Prefab/Stack");
         playerLife = GameConstants.PLAYER_LIFE;
         reloadTime = GameConstants.LOAD_WEAPON_TIME;
         stacks = GameObject.Find("Stack").transform;
@@ -39,7 +39,7 @@ public class Player : MonobehaviorSingleton<Player>
     {
         Debug.Log("ENTERED");
 
-        if (other.gameObject.tag == "bullet") // this string is your newly created tag
+        if (other.gameObject.tag == "Obstacle") // this string is your newly created tag
         {
             MenuController.Instance.GameEnd();
         }
