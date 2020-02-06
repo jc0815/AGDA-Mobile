@@ -1,27 +1,16 @@
 ﻿<Properties StartupConfiguration="{259CEB52-D68C-E024-CD2D-F4E350882C3E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Controller/GameController.cs">
-    <Files>
-      <File FileName="Assets/Script/Controller/GameController.cs" Line="48" Column="34" />
-      <File FileName="Assets/Script/Generator/TerrainGen.cs" Line="15" Column="1" />
-      <File FileName="Assets/Script/Controller/Player.cs" Line="26" Column="51" />
-      <File FileName="Assets/Script/Controller/MenuController.cs" Line="47" Column="57" />
-      <File FileName="Assets/Script/UI/InGameMenu.cs" Line="11" Column="80" />
-      <File FileName="Assets/Script/Util/GameConstants.cs" Line="13" Column="36" />
-      <File FileName="Assets/Script/UI/ResultMenu.cs" Line="20" Column="11" />
-      <File FileName="Assets/Script/Controller/SoundManager.cs" Line="5" Column="1" />
-      <File FileName="Assets/Script/Controller/ScoreController.cs" Line="11" Column="26" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AGDA-Mobile" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
-                <Node name="Controller" expanded="True">
-                  <Node name="GameController.cs" selected="True" />
-                </Node>
+                <Node name="Controller" expanded="True" />
                 <Node name="Enum" expanded="True" />
-                <Node name="Generator" expanded="True" />
+                <Node name="Generator" expanded="True">
+                  <Node name="ObstacleGenerator.cs" selected="True" />
+                </Node>
                 <Node name="UI" expanded="True" />
                 <Node name="Util" expanded="True" />
                 <Node name="winton" expanded="True" />
@@ -34,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="eb47c41e-3a3e-482f-a194-09a2701a7f53" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e28d8459-71df-406a-ba78-fcb581705522" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

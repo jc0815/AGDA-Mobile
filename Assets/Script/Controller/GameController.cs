@@ -52,6 +52,7 @@ public class GameController : MonobehaviorSingleton<GameController>
     {
         stack = new GameObject("Stack");
         Rigidbody2D r = stack.AddComponent<Rigidbody2D>();
+        r.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
     }
 
