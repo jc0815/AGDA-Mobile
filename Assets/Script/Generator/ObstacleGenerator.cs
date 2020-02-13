@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 // -------------------------
 // Bottom Obstacle Generator:
 // - Controls the top obstacle
@@ -17,21 +16,31 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
     private GameObject blocktwo;
     private GameObject screenBlock;
     private GameObject detector;
+
+    private GameObject car_blue;
+    private GameObject car_red;
+    private GameObject car_yellow;
+
     private int width = 0;
     private int height = 0;
     public bool[,] blocks = new bool[21, 13];
     public bool[,] topBlocks = new bool[21, 13];
     private float whenToDissappear;
     private float placeToDestoryDector;
-    private float speed = 10f;
+    private float speed = 9f;
     // Start is called before the first frame update
 
     void Awake()
     {
         //Generate();
-        block = Resources.Load<GameObject>("Prefab/GroundBlock");
+        block = Resources.Load<GameObject>("Prefab/ground-individual");
         blocktwo = Resources.Load<GameObject>("Prefab/GroundBlock");
-        detector = Resources.Load<GameObject>("Prefab/ground-individual");
+        detector = Resources.Load<GameObject>("Prefab/detector");
+
+        car_blue = Resources.Load<GameObject>("Prefab/car-blue");
+        car_red = Resources.Load<GameObject>("Prefab/car-red");
+        car_yellow = Resources.Load<GameObject>("Prefab/car-yellow");
+
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         whenToDissappear = -1.2f * screenBounds.x;
         placeToDestoryDector = screenBounds.x;
@@ -39,6 +48,21 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
         height = (int)(screenBounds.y);
         screenBlock = GameObject.FindGameObjectWithTag("Obstacle");
         // Debug.Log("found screenBlock?" + screenBlock);
+    }
+    GameObject getBlock(int x, int offset, int y)
+    {
+        int number = Random.Range(1, 4);
+        switch (number)
+        {
+            case 1:
+                return Instantiate(car_blue, new Vector3(x + offset, y, 0), Quaternion.identity);
+            case 2:
+                return Instantiate(car_red, new Vector3(x + offset, y, 0), Quaternion.identity);
+            case 3:
+                return Instantiate(car_yellow, new Vector3(x + offset, y, 0), Quaternion.identity);
+        }
+
+        return Instantiate(block, new Vector3(x + offset, y, 0), Quaternion.identity);
     }
     // Start is called before the first frame update
     void Generate()
@@ -56,6 +80,7 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
                 bool isGenerate = Random.Range(0.5f, 2 - 0.23f * y) > 1 ? true : false;
                 if (y == 0 && isGenerate)
                 {
+                    // GameObject childBlock = Instantiate(block, new Vector3(x + offset, y, 0), Quaternion.identity);
                     GameObject childBlock = Instantiate(block, new Vector3(x + offset, y, 0), Quaternion.identity);
                     blocks[x, y] = true;
                     childBlock.transform.SetParent(screenBlock.transform);
@@ -63,7 +88,7 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
                 if (y != 0 && hasNeighborBottom(x, y) && isGenerate)
                 {
                     //Debug.Log("the y is " + y);
-                    GameObject childBlock = Instantiate(block, new Vector3(x + offset, y, 0), Quaternion.identity);
+                    GameObject childBlock = getBlock(x, offset, y);
                     blocks[x, y] = true;
                     childBlock.transform.SetParent(screenBlock.transform);
                 }
@@ -76,7 +101,7 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
             {
                 topBlocks[x, y] = false;
                 //Debug.Log("the x is " + x + " the y is " + y);
-                bool isGenerate = Random.Range(0.5f, 2 - 0.23f * (y - height)) > 1 ? true : false;
+                bool isGenerate = Random.Range(0.5f, 2 - 0.23f * (Mathf.Abs(y - height))) > 1 ? true : false;
                 if (y == height - 1 && isGenerate)
                 {
                     GameObject childBlock = Instantiate(blocktwo, new Vector3(x + offset, y + 1, 0), Quaternion.identity);
