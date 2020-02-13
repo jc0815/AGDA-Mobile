@@ -49,8 +49,8 @@ public class Player : MonobehaviorSingleton<Player>
     private void Dead()
     {
         // TODO: Calls UI functions (not implemented yet)
-        MenuController.Instance.GameEnd();
-        Destroy(this);
+        //MenuController.Instance.GameEnd();
+        //Destroy(this);
     }
 
     // When character gets hit
@@ -89,5 +89,5 @@ public class Player : MonobehaviorSingleton<Player>
         }
     }
 
-   
+
 }

@@ -53,17 +53,17 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
 
                 blocks[x, y] = false;
                 //Debug.Log("the x is " + x + " the y is " + y);
-                bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
+                bool isGenerate = Random.Range(0.5f, 2 - 0.23f * y) > 1 ? true : false;
                 if (y == 0 && isGenerate)
                 {
-                    GameObject childBlock = Instantiate(block, new Vector3(x + offset, y + 1, 0), Quaternion.identity);
+                    GameObject childBlock = Instantiate(block, new Vector3(x + offset, y, 0), Quaternion.identity);
                     blocks[x, y] = true;
                     childBlock.transform.SetParent(screenBlock.transform);
                 }
                 if (y != 0 && hasNeighborBottom(x, y) && isGenerate)
                 {
                     //Debug.Log("the y is " + y);
-                    GameObject childBlock = Instantiate(block, new Vector3(x + offset, y + 1, 0), Quaternion.identity);
+                    GameObject childBlock = Instantiate(block, new Vector3(x + offset, y, 0), Quaternion.identity);
                     blocks[x, y] = true;
                     childBlock.transform.SetParent(screenBlock.transform);
                 }
@@ -76,7 +76,7 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
             {
                 topBlocks[x, y] = false;
                 //Debug.Log("the x is " + x + " the y is " + y);
-                bool isGenerate = Random.Range(1, 3) > 1 ? true : false;
+                bool isGenerate = Random.Range(0.5f, 2 - 0.23f * (y - height)) > 1 ? true : false;
                 if (y == height - 1 && isGenerate)
                 {
                     GameObject childBlock = Instantiate(blocktwo, new Vector3(x + offset, y + 1, 0), Quaternion.identity);
@@ -155,11 +155,11 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Debug.Log("G is pressed");
-            this.Generate();
-        }
+        // if (Input.GetKeyDown(KeyCode.G))
+        // {
+        //     Debug.Log("G is pressed");
+        //     this.Generate();
+        // }
         if (Input.GetKeyDown(KeyCode.C))
         {
             blocks = new bool[21, 13];
