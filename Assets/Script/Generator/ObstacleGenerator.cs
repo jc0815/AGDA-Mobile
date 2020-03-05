@@ -27,14 +27,14 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
     public bool[,] topBlocks = new bool[21, 13];
     private float whenToDissappear;
     private float placeToDestoryDector;
-    private float speed = 9f;
+    private float speed = 3f;
     // Start is called before the first frame update
 
     void Awake()
     {
         //Generate();
         block = Resources.Load<GameObject>("Prefab/ground-individual");
-        blocktwo = Resources.Load<GameObject>("Prefab/GroundBlock");
+        blocktwo = Resources.Load<GameObject>("Prefab/ObstacleBlock");
         detector = Resources.Load<GameObject>("Prefab/detector");
 
         car_blue = Resources.Load<GameObject>("Prefab/car-blue");
