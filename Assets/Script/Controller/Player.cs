@@ -86,6 +86,7 @@ public class Player : MonobehaviorSingleton<Player>
             groundBlock.transform.position = new Vector3(0, count, 0);
             groundBlock.transform.parent = stacks.transform;
             count++;
+            SoundManager.PlayMusic(Music.Stack);
         }
     }
 

@@ -36,7 +36,7 @@ public class SoundManager : MonobehaviorSingleton<SoundManager>
     // Start is called before the first frame update
     void Start()
     {
-        audioFiles = new AudioFile[100];
+        // audioFiles = new AudioFile[100];
     }
 
     void Awake()
