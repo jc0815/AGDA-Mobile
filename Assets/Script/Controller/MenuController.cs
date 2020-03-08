@@ -22,6 +22,8 @@ public class MenuController : MonobehaviorSingleton<MenuController>
     private GameMenu inGameMenu;
     private Text scoreText;
     private int currentScore;
+
+    private ResultMenu resultMenu;
     void Awake()
     {
         inGamePrefab = Resources.Load<GameObject>("Prefab/UIPrefab/InGamePrefab");
@@ -65,10 +67,22 @@ public class MenuController : MonobehaviorSingleton<MenuController>
 
         settingMenu.MusicButton.onClick.AddListener(delegate
         {
+            Text text = settingMenu.MusicButton.transform.Find("Text").GetComponent<Text>();
+            if(text.text.Contains("On")){
+                text.text = text.text.Replace("On", "Off");
+            } else {
+                text.text = text.text.Replace("Off", "On");
+            }
         });
 
         settingMenu.EffectButton.onClick.AddListener(delegate
         {
+            Text text = settingMenu.EffectButton.transform.Find("Text").GetComponent<Text>();
+            if(text.text.Contains("On")){
+                text.text = text.text.Replace("On", "Off");
+            } else {
+                text.text = text.text.Replace("Off", "On");
+            }
         });
 
         settingMenu.MainMenuButton.onClick.AddListener(delegate
@@ -90,9 +104,12 @@ public class MenuController : MonobehaviorSingleton<MenuController>
 
     public void AddResultMenuFunctionality(ResultMenu resultMenu)
     {
+        this.resultMenu = resultMenu;
         resultMenu.RestartButton.onClick.AddListener(delegate
         {
             DestroyMenu(resultMenu);
+            this.gameObject.AddComponent<ScoreController>();
+            this.gameObject.AddComponent<GameController>();
             Validate(inGamePrefab);
             //RESTART FUNCTION IMPLEMENTATION
         });
@@ -100,8 +117,15 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         resultMenu.ReviveButton.onClick.AddListener(delegate
         {
             DestroyMenu(resultMenu);
+            this.gameObject.AddComponent<ScoreController>();
+            this.gameObject.AddComponent<GameController>();
             Validate(inGamePrefab);
             //RESUME FUNCTION IMPLMENTATION
+        });
+
+        resultMenu.MenuButton.onClick.AddListener(delegate {
+            DestroyMenu(resultMenu);
+            Validate(startPrefab);
         });
     }
 
@@ -115,6 +139,8 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         Destroy(GetComponent<ScoreController>());
         DestroyMenu(inGameMenu);
         Validate(resultPrefab);
+        resultMenu.BestScoreText.text = resultMenu.BestScoreText.text + " " + scoreText.text;
+        resultMenu.CurrentScoreText.text = resultMenu.CurrentScoreText.text + " " + scoreText.text;
         //PAUSE FUNCTION IMPLEMENTATION
     }
 

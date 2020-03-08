@@ -20,11 +20,11 @@ public class Player : MonobehaviorSingleton<Player>
     // Start is called before the first frame update
     public void Start()
     {
-        blockPrefab = Resources.Load<GameObject>("Prefab/Stack");
+        blockPrefab = Resources.Load<GameObject>("Prefab/StackBlock");
         playerLife = GameConstants.PLAYER_LIFE;
         reloadTime = GameConstants.LOAD_WEAPON_TIME;
         stacks = GameObject.Find("Stack").transform;
-        count = 0;
+        count = 1;
     }
 
     // Update is called once per frame
@@ -32,25 +32,25 @@ public class Player : MonobehaviorSingleton<Player>
     {
         if (this.transform.position.y < -3)
         {
+            Debug.Log("y pos");
             Dead();
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("ENTERED");
-
         if (other.gameObject.tag == "Obstacle") // this string is your newly created tag
         {
-            MenuController.Instance.GameEnd();
+            Debug.Log("collision obstacle");
+            Dead();
         }
     }
 
     // When character dies lmao
-    private void Dead()
+    public void Dead()
     {
         // TODO: Calls UI functions (not implemented yet)
-        //MenuController.Instance.GameEnd();
-        //Destroy(this);
+        MenuController.Instance.GameEnd();
+        Destroy(this);
     }
 
     // When character gets hit
@@ -86,8 +86,9 @@ public class Player : MonobehaviorSingleton<Player>
             groundBlock.transform.position = new Vector3(0, count, 0);
             groundBlock.transform.parent = stacks.transform;
             count++;
+            SoundManager.PlayMusic(Music.Stack);
         }
     }
 
-
+    
 }
