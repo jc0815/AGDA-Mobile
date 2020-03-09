@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Ground
   - Stack
+  - screenBlock
+  - detector
   layers:
   - Default
   - TransparentFX

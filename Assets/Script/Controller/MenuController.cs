@@ -68,9 +68,12 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         settingMenu.MusicButton.onClick.AddListener(delegate
         {
             Text text = settingMenu.MusicButton.transform.Find("Text").GetComponent<Text>();
-            if(text.text.Contains("On")){
+            if (text.text.Contains("On"))
+            {
                 text.text = text.text.Replace("On", "Off");
-            } else {
+            }
+            else
+            {
                 text.text = text.text.Replace("Off", "On");
             }
         });
@@ -78,9 +81,12 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         settingMenu.EffectButton.onClick.AddListener(delegate
         {
             Text text = settingMenu.EffectButton.transform.Find("Text").GetComponent<Text>();
-            if(text.text.Contains("On")){
+            if (text.text.Contains("On"))
+            {
                 text.text = text.text.Replace("On", "Off");
-            } else {
+            }
+            else
+            {
                 text.text = text.text.Replace("Off", "On");
             }
         });
@@ -123,7 +129,8 @@ public class MenuController : MonobehaviorSingleton<MenuController>
             //RESUME FUNCTION IMPLMENTATION
         });
 
-        resultMenu.MenuButton.onClick.AddListener(delegate {
+        resultMenu.MenuButton.onClick.AddListener(delegate
+        {
             DestroyMenu(resultMenu);
             Validate(startPrefab);
         });
@@ -131,7 +138,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
 
     public void UpdateScore(int score)
     {
-        scoreText.text = (score*GameConstants.SCORE_MULTIPLIER_BY_TIME).ToString();
+        scoreText.text = (score * GameConstants.SCORE_MULTIPLIER_BY_TIME).ToString();
     }
     public void GameEnd()
     {
@@ -162,15 +169,14 @@ public class MenuController : MonobehaviorSingleton<MenuController>
 
     private void SpawnEventSystem()
     {
+        if (eventSystem == null)
+        {
+            eventSystem = GameObject.Find("EventSystem");
             if (eventSystem == null)
             {
-                eventSystem = GameObject.Find("EventSystem");
-            Debug.Log(eventSystem);
-                if (eventSystem == null)
-                {
-                    eventSystem = Instantiate(eventPrefab);
-                }
+                eventSystem = Instantiate(eventPrefab);
             }
+        }
     }
 
     private void Validate(GameObject prefab)

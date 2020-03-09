@@ -20,7 +20,7 @@ public class GameController : MonobehaviorSingleton<GameController>
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         blockPrefab = Resources.Load<GameObject>("Prefab/GroundBlock");
         playerPrefab = Resources.Load<GameObject>("Prefab/Player");
         backGroundPrefab = Resources.Load<GameObject>("Prefab/Background");
@@ -34,7 +34,7 @@ public class GameController : MonobehaviorSingleton<GameController>
         // 2) Attach GroundGenerator script to Game Scene
         // 3) Change GroundBlock prefab from static to kinematic
         // SpawnGround();
-        SpawnGroundDefault(); 
+        SpawnGroundDefault();
     }
 
     // Update is called once per frame
@@ -79,10 +79,5 @@ public class GameController : MonobehaviorSingleton<GameController>
             groundBlock.transform.position = new Vector3(i, 0, 0);
             groundBlock.transform.parent = ground.transform;
         }
-    }
-
-    public void SpawnGround()
-    {
-        this.GetComponent<GroundGenerator>().genFirstSet();
     }
 }
