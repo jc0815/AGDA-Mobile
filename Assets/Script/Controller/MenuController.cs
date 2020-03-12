@@ -34,10 +34,10 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         eventPrefab = Resources.Load<GameObject>("Prefab/UIPrefab/EventSystem");
 
         activeMenus = new List<GameMenu>();
+        
     }
-
     void Start()
-    {
+    { 
         Validate(startPrefab);
     }
 
@@ -45,11 +45,7 @@ public class MenuController : MonobehaviorSingleton<MenuController>
     {
         startMenu.StartButton.onClick.AddListener(delegate
         {
-            Debug.Log("Clicked");
-            DestroyMenu(startMenu);
-            this.gameObject.AddComponent<ScoreController>();
-            this.gameObject.AddComponent<GameController>();
-            Validate(inGamePrefab);
+            SceneManager.LoadScene("InGame");
         });
 
         startMenu.SettingButton.onClick.AddListener(delegate
@@ -96,59 +92,6 @@ public class MenuController : MonobehaviorSingleton<MenuController>
             DestroyMenu(settingMenu);
             Validate(startPrefab);
         });
-    }
-
-    public void AddInGameMenuFunctionality(InGameMenu inGameMenu)
-    {
-        this.inGameMenu = inGameMenu;
-        scoreText = inGameMenu.ScoreText;
-        inGameMenu.SpawnButton.onClick.AddListener(delegate
-        {
-            Player.Instance.Stack();
-        });
-    }
-
-    public void AddResultMenuFunctionality(ResultMenu resultMenu)
-    {
-        this.resultMenu = resultMenu;
-        resultMenu.RestartButton.onClick.AddListener(delegate
-        {
-            DestroyMenu(resultMenu);
-            this.gameObject.AddComponent<ScoreController>();
-            this.gameObject.AddComponent<GameController>();
-            Validate(inGamePrefab);
-            //RESTART FUNCTION IMPLEMENTATION
-        });
-
-        resultMenu.ReviveButton.onClick.AddListener(delegate
-        {
-            DestroyMenu(resultMenu);
-            this.gameObject.AddComponent<ScoreController>();
-            this.gameObject.AddComponent<GameController>();
-            Validate(inGamePrefab);
-            //RESUME FUNCTION IMPLMENTATION
-        });
-
-        resultMenu.MenuButton.onClick.AddListener(delegate
-        {
-            DestroyMenu(resultMenu);
-            Validate(startPrefab);
-        });
-    }
-
-    public void UpdateScore(int score)
-    {
-        scoreText.text = (score * GameConstants.SCORE_MULTIPLIER_BY_TIME).ToString();
-    }
-    public void GameEnd()
-    {
-        currentScore = ScoreController.Instance.GetCurrentScore();
-        Destroy(GetComponent<ScoreController>());
-        DestroyMenu(inGameMenu);
-        Validate(resultPrefab);
-        resultMenu.BestScoreText.text = resultMenu.BestScoreText.text + " " + scoreText.text;
-        resultMenu.CurrentScoreText.text = resultMenu.CurrentScoreText.text + " " + scoreText.text;
-        //PAUSE FUNCTION IMPLEMENTATION
     }
 
     private Canvas SceneCanvas
@@ -213,14 +156,6 @@ public class MenuController : MonobehaviorSingleton<MenuController>
         else if (type == typeof(SettingMenu))
         {
             AddSettingMenuFunctionality((SettingMenu)menuComponent);
-        }
-        else if (type == typeof(InGameMenu))
-        {
-            AddInGameMenuFunctionality((InGameMenu)menuComponent);
-        }
-        else if (type == typeof(ResultMenu))
-        {
-            AddResultMenuFunctionality((ResultMenu)menuComponent);
         }
         activeMenus.Add(menuComponent);
     }

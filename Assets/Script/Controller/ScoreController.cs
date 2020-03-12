@@ -15,7 +15,7 @@ public class ScoreController : MonobehaviorSingleton<ScoreController>
     void Update()
     {
         currentScore += Time.deltaTime;
-        MenuController.Instance.UpdateScore((int)currentScore*GameConstants.SCORE_MULTIPLIER_BY_TIME);
+        BattleMenuController.Instance.UpdateScore((int)currentScore*GameConstants.SCORE_MULTIPLIER_BY_TIME);
     }
 
     public int GetCurrentScore()

@@ -8,6 +8,7 @@ public class Stack : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle") // this string is your newly created tag
         {
+            Debug.Log("hit");
             Destroy(this);
         }
     }

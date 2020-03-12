@@ -93,8 +93,6 @@ public class ObstacleGenerator : MonobehaviorSingleton<ObstacleGenerator>
 
                 if (y == height - 1 && isGenerate)
                 {
-                    Debug.Log(x);
-                    Debug.Log(y);
                     GameObject childBlock = Instantiate(obstacleBlock, new Vector3(x + offset, y + 1, 0), Quaternion.identity);
                     topBlocks[x, y] = true;
                     childBlock.transform.SetParent(screenBlock.transform);

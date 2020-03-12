@@ -49,7 +49,7 @@ public class Player : MonobehaviorSingleton<Player>
     public void Dead()
     {
         // TODO: Calls UI functions (not implemented yet)
-        MenuController.Instance.GameEnd();
+        BattleMenuController.Instance.GameEnd();
         Destroy(this);
     }
 

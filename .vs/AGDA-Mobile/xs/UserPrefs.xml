@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{259CEB52-D68C-E024-CD2D-F4E350882C3E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Controller/MenuController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Controller/ScoreController.cs">
     <Files>
-      <File FileName="Assets/Script/Generator/ObstacleGenerator.cs" Line="40" Column="57" />
-      <File FileName="Assets/Script/Generator/ObstacleGenerator.cs" Line="221" Column="1" />
-      <File FileName="Assets/Script/Generator/ObstacleGenerator.cs" Line="221" Column="1" />
-      <File FileName="Assets/Script/Generator/ObstacleGenerator.cs" Line="221" Column="1" />
-      <File FileName="Assets/Script/Controller/Player.cs" Line="88" Column="21" />
-      <File FileName="Assets/Script/Controller/Stack.cs" Line="15" Column="1" />
-      <File FileName="Assets/Script/Controller/MenuController.cs" Line="168" Column="1" />
+      <File FileName="Assets/Script/Generator/ObstacleGenerator.cs" Line="95" Column="18" />
+      <File FileName="Assets/Script/Controller/Player.cs" Line="52" Column="15" />
+      <File FileName="Assets/Script/Controller/Stack.cs" Line="11" Column="30" />
+      <File FileName="Assets/Script/Controller/MenuController.cs" Line="159" Column="10" />
+      <File FileName="Assets/Script/Controller/GameController.cs" Line="60" Column="6" />
+      <File FileName="Assets/Script/Controller/BattleMenuController.cs" Line="197" Column="9" />
+      <File FileName="Assets/Script/Controller/ScoreController.cs" Line="18" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
                 <Node name="Controller" expanded="True">
-                  <Node name="MenuController.cs" selected="True" />
+                  <Node name="ScoreController.cs" selected="True" />
                 </Node>
                 <Node name="Enum" expanded="True" />
                 <Node name="Generator" expanded="True" />
@@ -32,7 +32,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="16747445-7482-4db0-b5c1-745691ea6526" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fc715dff-9627-452f-99d6-85e57791a0a6" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
